@@ -1,1 +1,293 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><title>ラクガキストア</title></head><body><h1>Welcome to Rakugaki Store</h1></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ラクガキストア</title>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Patrick Hand', cursive;
+      margin: 0;
+      background-color: #f5f1e8;
+      color: #4a3f35;
+    }
+    header {
+      background-color: #e7d9c4;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 1rem;
+      gap: 1.5rem;
+    }
+    .product {
+      background-color: #fff8ef;
+      border: 1px solid #d2c0a8;
+      border-radius: 12px;
+      padding: 1rem;
+      width: 200px;
+      text-align: center;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product:hover {
+      transform: scale(1.03);
+      box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    .product img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    .product button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #d4b48c;
+      border: none;
+      color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+    }
+    .product button:hover {
+      background-color: #b69671;
+    }
+    .product h3 {
+      margin-bottom: 0.5rem;
+    }
+    .product a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 1rem;
+      left: 1rem;
+      cursor: pointer;
+      font-size: 1.5rem;
+      background-color: #e7d9c4;
+      border: 1px solid #c3b29b;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      box-shadow: 1px 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .cart {
+      position: fixed;
+      right: 1rem;
+      top: 1rem;
+      background-color: #fff;
+      border: 1px solid #d2c0a8;
+      padding: 1rem;
+      border-radius: 12px;
+      max-width: 300px;
+      display: none;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+    .cart h3 {
+      margin-top: 0;
+    }
+    .cart li a {
+      color: #4a3f35;
+      text-decoration: none;
+    }
+    .cart li a:hover {
+      text-decoration: underline;
+    }
+    .cart .checkout button {
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background-color: #d4b48c;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+    }
+    .cart .checkout button:hover {
+      background-color: #b69671;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>ラクガキストア</h1>
+  </header>
+
+  <div class="cart-icon" onclick="toggleCart()">🛒 View Cart</div>
+
+  <div class="container">
+    <div class="product">
+      <a href="product-tiger.html">
+        <img src="https://via.placeholder.com/200x200.png?text=Tiger" alt="Tiger">
+        <h3>トラ<br><small>Tiger</small></h3>
+      </a>
+      <p>$3.00</p>
+      <button onclick="addToCart('Tiger', 3.00, 'product-tiger.html')">Add to Cart</button>
+    </div>
+    <!-- Repeat for other stickers -->
+      <div class="container">
+   <div class="product">
+      <a href="product-fatkiwi.html">
+        <img src="https://via.placeholder.com/200x200.png?text=Fat+Kiwi" alt="Fat Kiwi">
+        <h3>太ったキウイ<br><small>Fat Kiwi</small></h3>
+      </a>
+      <p>$3.00</p>
+      <button onclick="addToCart('Fat Kiwi', 3.00, 'product-fatkiwi.html')">Add to Cart</button>
+    </div>
+    <!-- Add similar entries for Fox, Kiwi, Cat, Dog, Frog -->
+  </div>
+  <div class="container">
+<div class="product">
+  <a href="product-fox.html">
+    <img src="https://via.placeholder.com/200x200.png?text=Fox" alt="Fox">
+    <h3>キツネ<br><small>Fox</small></h3>
+    <p>$3.00</p>
+  </a>
+  <button onclick="addToCart('fox', 3.00, 'product-fox.html')">Add to Cart</button>
+</div>
+ <div class="container">
+    <div class="product">
+      <a href="product-dog.html">
+        <img src="https://via.placeholder.com/200x200.png?text=dog" alt="dog">
+        <h3>イヌ<br><small>dog</small></h3>
+      </a>
+      <p>$3.00</p>
+      <button onclick="addToCart('dog', 3.00, 'product-dog.html')">Add to Cart</button>
+    </div>
+     <div class="container">
+    <div class="product">
+      <a href="product-cat.html">
+        <img src="https://via.placeholder.com/200x200.png?text=cat" alt="cat">
+        <h3>ネコ<br><small>cat</small></h3>
+      </a>
+      <p>$3.00</p>
+      <button onclick="addToCart('cat', 3.00, 'product-cat.html')">Add to Cart</button>
+    </div>
+<div class="container">
+    <div class="product">
+      <a href="product-kiwi.html">
+        <img src="https://via.placeholder.com/200x200.png?text=kiwi" alt="kiwi">
+        <h3>キウイ</h3><br><small>kiwi</small></h3>
+      </a>
+      <p>$3.00</p>
+      <button onclick="addToCart('kiwi', 3.00, 'product-kiwi.html')">Add to Cart</button>
+    </div>
+    <div class="container">
+    <div class="product">
+      <a href="product-frog.html">
+        <img src="https://via.placeholder.com/200x200.png?text=kiwi" alt="frog">
+        <h3>カエル</h3><br><small>frog</small></h3>
+      </a>
+      <p>$3.00</p>
+      <button onclick="addToCart('frog', 3.00, 'product-frog.html')">Add to Cart</button>
+    </div>
+  <div class="cart" id="cart">
+    <h3>Your Cart</h3>
+    <ul id="cart-items"></ul>
+    <p>Shipping: $<span id="cart-shipping">0.00</span></p>
+    <p>Total: $<span id="cart-total">0.00</span></p>
+    <div class="checkout">
+      <button onclick="goToCheckout()">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+    const cart = [];
+
+    function addToCart(name, price, url) {
+      const existing = cart.find(item => item.name === name);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ name, price, quantity: 1, url });
+      }
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartBox = document.getElementById('cart');
+      const itemsList = document.getElementById('cart-items');
+      const total = document.getElementById('cart-total');
+      const shippingDisplay = document.getElementById('cart-shipping');
+
+      itemsList.innerHTML = '';
+      let sum = 0;
+      let shipping = 0;
+
+      cart.forEach((item) => {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = item.url;
+        link.textContent = `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`;
+        li.appendChild(link);
+        itemsList.appendChild(li);
+        sum += item.price * item.quantity;
+        shipping += item.quantity * 0.50;
+      });
+
+      total.textContent = (sum + shipping).toFixed(2);
+      shippingDisplay.textContent = shipping.toFixed(2);
+      cartBox.style.display = 'block';
+    }
+
+    function toggleCart() {
+      const cartBox = document.getElementById('cart');
+      cartBox.style.display = (cartBox.style.display === 'block') ? 'none' : 'block';
+    }
+
+    window.addEventListener('click', function(e) {
+      const cartBox = document.getElementById('cart');
+      if (!cartBox.contains(e.target) && !e.target.closest('.cart-icon')) {
+        cartBox.style.display = 'none';
+      }
+    });
+
+    function goToCheckout() {
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = 'https://www.paypal.com/cgi-bin/webscr';
+      form.target = '_blank';
+
+      form.innerHTML = `
+        <input type="hidden" name="cmd" value="_cart">
+        <input type="hidden" name="upload" value="1">
+        <input type="hidden" name="business" value="bailychen682@gmail.com">
+        <input type="hidden" name="return" value="https://yourdomain.com/thankyou.html">
+      `;
+
+      cart.forEach((item, index) => {
+        form.innerHTML += `
+          <input type="hidden" name="item_name_${index + 1}" value="${item.name}">
+          <input type="hidden" name="amount_${index + 1}" value="${item.price.toFixed(2)}">
+          <input type="hidden" name="quantity_${index + 1}" value="${item.quantity}">
+          <input type="hidden" name="handling_${index + 1}" value="${(item.quantity * 0.50).toFixed(2)}">
+        `;
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+      document.body.removeChild(form);
+    }
+  </script>
+</body>
+</html>
